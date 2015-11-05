@@ -11,15 +11,13 @@
 |
 */
 
-/**/
+
 Route::get('/', function () {
     //return view('welcome');
     return 'Página HOME da aplicação';
 });
 
-Route::get('postagens', function() {
-	return 'Listando as postagens';
-});
+Route::get('postagens', 'PostagemController@listaProdutos');
 
 Route::get('postagem/adicionar', function(){
 	return 'Adicionar uma nova postagem...';
