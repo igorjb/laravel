@@ -24,7 +24,6 @@ Route::get('postagem/adicionar', function(){
 	return 'Adicionar uma nova postagem...';
 });
 
-/**/
 Route::get('postagem/editar/{id_postagem?}/categoria/{teste?}', function($id_postagem = '12', $teste = '') {
 	return "Editar a postagem {$id_postagem}, {$teste}";
 });
