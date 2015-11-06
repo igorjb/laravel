@@ -17,11 +17,9 @@ Route::get('/', function () {
     return 'Página HOME da aplicação';
 });
 
-Route::get('postagens', 'PostagemController@listaProdutos');
+Route::get('postagem', 'PostagemController@listaProdutos');
 
-Route::get('postagem/adicionar', function(){
-	return 'Adicionar uma nova postagem...';
-});
+Route::get('postagem/adicionar', 'PostagemController@adicionar');
 
 Route::get('postagem/editar/{id_postagem?}/categoria/{teste?}', function($id_postagem = '12', $teste = '') {
 	return "Editar a postagem {$id_postagem}, {$teste}";
