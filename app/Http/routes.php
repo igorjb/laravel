@@ -17,18 +17,7 @@ Route::get('/', function () {
     return 'Página HOME da aplicação';
 });
 
-Route::get('postagem', 'PostagemController@listaProdutos');
-
-Route::get('postagem/adicionar', 'PostagemController@adicionar');
-
-Route::get('postagem/editar/{id_postagem?}/categoria/{teste?}', function($id_postagem = '12', $teste = '') {
-	return "Editar a postagem {$id_postagem}, {$teste}";
-});
-
-Route::get('postagem/deletar/{id_postagem}', function($id_postagem){
-	return "Deletar a postagem {$id_postagem}";
-})
-->where('$id_postagem', '[0-9]+');
+Route::controller('postagem', 'PostagemController');
 
 Route::group(array('prefix' => 'painel'), function(){
 
