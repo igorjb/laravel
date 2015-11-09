@@ -17,12 +17,12 @@ class PostagemController extends Controller
     public function getIndex()
     {
         //
-        return 'Listando os produtos';
+        return 'Listando as postagens';
     }
 
     public function getAdicionar()
     {
-        return 'Adicionar produto';
+        return 'Adicionar postagem';
     }
 
     public function getEditar($id_postagem)
