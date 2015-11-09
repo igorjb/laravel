@@ -17,7 +17,7 @@ class PostagemController extends Controller
     public function getIndex()
     {
         //
-        return 'Listando as postagens';
+        return 'Listando as postagens ';
     }
 
     public function getAdicionar()
