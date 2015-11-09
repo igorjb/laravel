@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use View;
 
 class PostagemController extends Controller
 {
@@ -16,13 +17,12 @@ class PostagemController extends Controller
      */
     public function getIndex()
     {
-        //
-        return 'Listando as postagens ';
+        return View::make('postagem.lista');
     }
 
-    public function getAdicionar()
+    public function getCadastrar()
     {
-        return 'Adicionar postagem';
+        return View::make('postagem.cadastrar');
     }
 
     public function getEditar($id_postagem)
