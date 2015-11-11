@@ -4,7 +4,7 @@
 	</head> 
 	<body> 
 		<header>
-			Topo da apicação
+			Topo da aplicação
 		</header>
 
 		<div class="content">

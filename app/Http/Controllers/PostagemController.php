@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use View;
+use Illuminate\Html\FormFacade;
+use Illuminate\Html\HtmlFacade;
 
 class PostagemController extends Controller
 {
@@ -23,6 +25,11 @@ class PostagemController extends Controller
     public function getCadastrar()
     {
         return View::make('postagem.cadastrar');
+    }
+
+    public function postCadastrar()
+    {
+        return 'Adicionando o post...';
     }
 
     public function getEditar($id_postagem)
