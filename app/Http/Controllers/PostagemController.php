@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use View;
 use Illuminate\Html\FormFacade;
 use Illuminate\Html\HtmlFacade;
+use App\PostagemDados;
 
 class PostagemController extends Controller
 {
@@ -19,7 +20,9 @@ class PostagemController extends Controller
      */
     public function getIndex()
     {
-        return View::make('postagem.lista');
+        $postagens = PostagemDados::get();
+
+        return View::make('postagem.lista', compact('postagens'));
     }
 
     public function getCadastrar()
