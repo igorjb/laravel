@@ -1,1 +1,4 @@
 php artisan make:controller PostagemController
+php artisan make:migration postagem
+php artisan migrate
+
