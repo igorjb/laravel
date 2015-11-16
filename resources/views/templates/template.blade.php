@@ -1,6 +1,6 @@
 <html> 
 	<head> 
-		<title>EspecializaTi</title> 
+		<title>EspecializaTi</title>
 	</head> 
 	<body> 
 		<header>
