@@ -1,6 +1,9 @@
 php artisan make:controller PostagemController
 php artisan make:migration postagem
 php artisan migrate
+<<<<<<< HEAD
 php artisan make:model Postagem
 
+=======
+>>>>>>> eefeef63c0610498526af3b3d92df94e067382ac
 
