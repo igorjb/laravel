@@ -17,7 +17,7 @@ Route::get('/', function () {
     return 'Página HOME da aplicação';
 });
 
-Route::controller('postagem', 'PostagemController');
+Route::controller('postagens', 'PostagemController');
 
 Route::group(array('prefix' => 'painel'), function(){
 

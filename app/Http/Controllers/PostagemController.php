@@ -10,9 +10,6 @@ use View;
 use Illuminate\Html\FormFacade;
 use Illuminate\Html\HtmlFacade;
 use App\PostagemDados;
-use Input;
-use Redirect;
-use DB;
 
 class PostagemController extends Controller
 {
@@ -30,42 +27,22 @@ class PostagemController extends Controller
 
     public function getCadastrar()
     {
-        return View::make('postagem.new-edit');
+        return View::make('postagem.cadastrar');
     }
 
     public function postCadastrar()
     {
-        $postagem = new PostagemDados();
-        $postagem->titulo = Input::get('titulo');
-        $postagem->conteudo = Input::get('conteudo');
-        $postagem->save();
-
-        return Redirect::to('postagem');
+        return 'Adicionando o post...';
     }
 
     public function getEditar($id_postagem)
     {
-        $postagem = PostagemDados::find($id_postagem);
-
-        return View::make('postagem.new-edit', compact('postagem'));
-    }
-
-    public function postEditar($id_postagem)
-    {
-        $postagem = PostagemDados::find($id_postagem);
-        $postagem->titulo = Input::get('titulo');
-        $postagem->conteudo = Input::get('conteudo');
-        $postagem->save();
-
-        return Redirect::to('postagem');
+        return "Editar a postagem {$id_postagem}";
     }
 
     public function getDeletar($id_postagem)
     {
-        $postagem = PostagemDados::find($id_postagem);
-        $postagem->delete();
-
-        return Redirect::to('postagem');
+        return "Deletar postagem {$id_postagem}";
     }
 
     public function MissingMethod($params = array()){
