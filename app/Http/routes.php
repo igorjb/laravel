@@ -17,6 +17,8 @@ Route::get('/', function () {
     return 'Página HOME da aplicação';
 });
 
+Route::when('*', 'csrf', array('POST') );
+
 Route::controller('postagem', 'PostagemController');
 
 Route::group(array('prefix' => 'painel'), function(){

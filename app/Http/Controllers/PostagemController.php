@@ -13,7 +13,7 @@ use App\PostagemDados;
 use Input;
 use Redirect;
 use DB;
-
+use Validator;
 class PostagemController extends Controller
 {
     /**
@@ -21,23 +21,40 @@ class PostagemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $rules = array('titulo' => 'required|min:3|max:100', 'conteudo' => 'required|min:5|max:500');
+
     public function getIndex()
     {
         $postagens = PostagemDados::get();
 
-        return View::make('postagem.lista', compact('postagens'));
+        $titulo = 'Listagem das postagens - EspecializaTi';
+
+        return View::make('postagem.lista', compact('postagens', 'titulo'));
     }
 
     public function getCadastrar()
     {
-        return View::make('postagem.new-edit');
+        $titulo = 'Adicionar Nova Postagem - EspecializaTi';
+
+        $tituloMostra = 'Adicionar nova postagem';
+
+        return View::make('postagem.new-edit', compact('titulo', 'tituloMostra'));
     }
 
     public function postCadastrar()
     {
-        $postagem = new PostagemDados();
-        $postagem->titulo = Input::get('titulo');
-        $postagem->conteudo = Input::get('conteudo');
+        $dadosFormulario = Input::all();
+        
+        $validator = Validator::make($dadosFormulario, $this->rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('postagem/cadastrar')
+                    ->withErrors($validator)
+                    ->withInput();
+        }
+
+        $postagem = new PostagemDados($dadosFormulario);
         $postagem->save();
 
         return Redirect::to('postagem');
@@ -45,16 +62,30 @@ class PostagemController extends Controller
 
     public function getEditar($id_postagem)
     {
+
         $postagem = PostagemDados::find($id_postagem);
 
-        return View::make('postagem.new-edit', compact('postagem'));
+        $titulo = 'Editar postagem - EspecializaTi';
+
+        $tituloMostra = 'Editar a postagem';
+
+        return View::make('postagem.new-edit', compact('postagem', 'titulo', 'tituloMostra'));
     }
 
     public function postEditar($id_postagem)
     {
+        $dadosFormulario = Input::all();
+        
+        $validator = Validator::make($dadosFormulario, $this->rules);
+
+        if ($validator->fails()) {
+            return Redirect::to("postagem/editar/{$id_postagem}")
+                    ->withErrors($validator)
+                    ->withInput();
+        }
+
         $postagem = PostagemDados::find($id_postagem);
-        $postagem->titulo = Input::get('titulo');
-        $postagem->conteudo = Input::get('conteudo');
+        $postagem->__construct($dadosFormulario);
         $postagem->save();
 
         return Redirect::to('postagem');

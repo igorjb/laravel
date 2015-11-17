@@ -1,18 +1,20 @@
 <html> 
 	<head> 
-		<title>EspecializaTi</title>
-	</head> 
+		<title>{!!$titulo or 'EspecializaTi - Torne-se um especialista você também'!!}}</title>
+
+		{!!HTML::style('assets/css/bootstrap.css')!!}
+		{!!HTML::style('assets/css/style.css')!!}
 	<body> 
 		<header>
-			Topo da aplicação
+			{!!HTML::image('assets/imagens/logo.png', 'Logo EspecializaTi', array('class' => 'img-logo'))!!}
 		</header>
 
-		<div class="content">
+		<div class="content container">
 			@yield('content')
 		</div>
 
 		<footer>
-			Footer da aplicação
+			SEPOG/COGECT
 		</footer>
 	</body> 
 </html>

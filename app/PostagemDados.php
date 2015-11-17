@@ -10,5 +10,7 @@ class PostagemDados extends Model
     protected $table = 'postagens';
 
 	protected $primaryKey = 'id_postagem';
+
+	protected $guarded = array('id_postagem');
 }
 
