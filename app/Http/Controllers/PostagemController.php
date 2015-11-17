@@ -73,4 +73,5 @@ class PostagemController extends Controller
     }
 
 
+
 }

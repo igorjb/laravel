@@ -12,5 +12,6 @@
 			{!! Form::textarea('conteudo', isset($postagem->conteudo) ? $postagem->conteudo : '', array('placeholder' => 'Conteúdo')) !!}
 			{!! Form::submit('Enviar dados') !!}
 	{!! Form::close() !!}
+
 	
 @stop

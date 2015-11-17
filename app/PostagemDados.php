@@ -11,3 +11,4 @@ class PostagemDados extends Model
 
 	protected $primaryKey = 'id_postagem';
 }
+
