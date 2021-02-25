@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Employee;
+use App\Models\Funcionario;
 
-class EmployeeController extends Controller
+class FuncionarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
-        return view('index', compact('employee'));
+        $funcionarios = Funcionario::all();
+        return view('index', compact('funcionarios'));
     }
 
     /**
@@ -37,13 +37,13 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $storeData = $request->validate([
-            'name' => 'required|max:255',
+            'nome' => 'required|max:255',
             'email' => 'required|max:255',
-            'phone' => 'required|numeric',
+            'telefone' => 'required|numeric',
         ]);
-        $employee = Employee::create($storeData);
+        $funcionario = Funcionario::create($storeData);
 
-        return redirect('/employees')->with('completed', 'Employee created!');
+        return redirect('/funcionarios')->with('completed', 'Funcionário adicionado!');
     }
 
     /**
@@ -65,8 +65,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::findOrFail($id);
-        return view('update', compact('employee'));
+        $funcionario = Funcionario::findOrFail($id);
+        return view('update', compact('funcionario'));
     }
 
     /**
@@ -79,14 +79,14 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' => 'required|max:255',
+            'nome' => 'required|max:255',
             'email' => 'required|max:255',
-            'phone' => 'required|numeric',
+            'telefone' => 'required|numeric',
         ]);
 
-        Employee::whereId($id)->update($data);
+        Funcionario::whereId($id)->update($data);
 
-        return redirect('/employees')->with('completed', 'Employee updated');
+        return redirect('/funcionarios')->with('completed', 'Funcionário atualizado!');
     }
 
     /**
@@ -97,9 +97,9 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = Employee::findOrFails($id);
-        $employee->delete();
+        $funcionario = Funcionario::findOrFail($id);
+        $funcionario->delete();
 
-        return redirect('/employees')->with('completed', 'Employee deleted');
+        return redirect('/funcionarios')->with('completed', 'Funcionário excluído!');
     }
 }
