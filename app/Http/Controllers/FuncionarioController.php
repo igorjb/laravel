@@ -36,13 +36,23 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        $storeData = $request->validate([
+        $rules = array(
             'nome' => 'required|max:255',
             'email' => 'required|max:255',
             'telefone' => 'required|numeric',
-        ]);
-        $funcionario = Funcionario::create($storeData);
+            'optin' => '');
+        
+        $messages = array(
+            'nome.required' => 'Informe o nome do funcionário',
+            'email.required' => 'Informe o email do funcionário',
+            'telefone.required' => 'Informe o telefone do funcionário');
+        
+        $request['optin'] = isset($request['optin']);
+      
+        $data = $request->validate($rules, $messages);
 
+        $funcionario = Funcionario::create($data);
+        
         return redirect('/funcionarios')->with('completed', 'Funcionário adicionado!');
     }
 
@@ -78,11 +88,20 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
+        $rules = array(
             'nome' => 'required|max:255',
             'email' => 'required|max:255',
             'telefone' => 'required|numeric',
-        ]);
+            'optin' => '');
+        
+        $messages = array(
+            'nome.required' => 'Informe o nome do funcionário',
+            'email.required' => 'Informe o email do funcionário',
+            'telefone.required' => 'Informe o telefone do funcionário');
+        
+        $request['optin'] = isset($request['optin']);
+      
+        $data = $request->validate($rules, $messages);
 
         Funcionario::whereId($id)->update($data);
 

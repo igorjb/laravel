@@ -32,6 +32,10 @@
                 <label for="telefone">Telefone</label>
                 <input type="tel" class="form-control" name="telefone"/>
             </div>
+            <div class="form-group">
+                <label for="optin">Desejo receber notificações de compras pelo WhatsApp</label>
+                <input type="checkbox" name="optin"/>
+            </div>
             <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
             <a href="{{ route('funcionarios.index')}}" class="btn btn-success btn-sm">Voltar</a>
         </form>

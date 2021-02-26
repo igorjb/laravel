@@ -32,7 +32,10 @@
                 <label for="phone">Telefone</label>
                 <input type="tel" class="form-control" name="telefone" value="{{ $funcionario->telefone }}" /> 
             </div>
-
+            <div class="form-group">
+                <label for="optin">Desejo receber notificações de compras pelo WhatsApp</label>
+                <input type="checkbox" name="optin" value="1"<?php echo ($funcionario->optin == 1 ? ' checked' : ''); ?> />
+            </div>
             <button type="submit" class="btn btn-success btn-sm">Atualizar</button>
             <a href="{{ route('funcionarios.index')}}" class="btn btn-primary btn-sm">Voltar</a>
         </form>

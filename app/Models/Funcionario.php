@@ -11,6 +11,7 @@ class Funcionario extends Model
     protected $fillable = [
         'nome',
         'email',
-        'telefone'
+        'telefone',
+        'optin'
     ];
 }

@@ -18,6 +18,7 @@ class CreateFuncionariosTable extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('telefone');
+            $table->boolean('optin')->nullable();
             $table->timestamps();
         });
     }

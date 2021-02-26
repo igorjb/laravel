@@ -15,6 +15,7 @@
                 <td>Nome</td>
                 <td>Email</td>
                 <td>Telefone</td>
+                <td>Notificações pelo WhatsApp</td>
                 <td>Ações</td>
             </tr>
         </thead>
@@ -25,6 +26,9 @@
                     <td>{{$funcionario->nome}}</td>
                     <td>{{$funcionario->email}}</td>
                     <td>{{$funcionario->telefone}}</td>
+                    <td> <?php if ($funcionario->optin == 1) echo "SIM"; 
+                          else echo "NÃO"; ?></td>
+                   
                     <td>
                         <a href="{{ route('funcionarios.edit', $funcionario->id)}}" class="btn btn-success btn-sm">Editar</a>
                         <form action="{{ route('funcionarios.destroy', $funcionario->id)}}" method="post" style="display: inline-block">
